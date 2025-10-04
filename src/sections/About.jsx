@@ -3,7 +3,7 @@ import { about as AboutData } from '../constants';
 import { motion } from 'framer-motion';
 
 const About = () => {
-  // Variants for each card
+  // Variants for each card animation on scroll
   const cardVariants = {
     hidden: { opacity: 0, y: 30 },
     visible: (i) => ({
@@ -47,18 +47,24 @@ const About = () => {
             initial="hidden"
             whileInView="visible"
             viewport={{ once: true, amount: 0.3 }}
+            whileHover={{ y: -5, boxShadow: '0px 15px 30px rgba(0,0,0,0.1)' }}
+            transition={{ type: 'spring', stiffness: 300, damping: 20 }}
             className={`flex flex-col items-center sm:flex-row ${
               index % 2 !== 0 ? 'sm:flex-row-reverse' : ''
-            } bg-brown-50 p-5 sm:p-8 rounded-lg shadow-md`}
+            } bg-brown-50 p-5 sm:p-8 rounded-lg shadow-md cursor-pointer`}
           >
-            {/* Icon container */}
-            <div className="w-24 h-24 sm:w-32 sm:h-32 flex-shrink-0 mb-4 sm:mb-0">
+            {/* Icon container with hover motion */}
+            <motion.div
+              className="w-24 h-24 sm:w-32 sm:h-32 flex-shrink-0 mb-4 sm:mb-0"
+              whileHover={{ scale: 1.15, rotate: 5 }}
+              transition={{ type: 'spring', stiffness: 300, damping: 20 }}
+            >
               <img
                 src={item.icon}
                 alt={item.title}
                 className="w-full h-full object-contain"
               />
-            </div>
+            </motion.div>
 
             {/* Text container */}
             <div className="sm:ml-6 sm:mr-6 text-center sm:text-left">

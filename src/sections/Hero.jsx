@@ -52,7 +52,7 @@ const Hero = () => {
       {/* Avatar & Ellipse */}
       <div className="flex flex-grow justify-center items-center relative">
         {/* Ellipse behind (fills hero height) */}
-        <img
+        {/* <img
           src={"ellipse.svg"}
           alt="decorative circle"
           className="absolute 
@@ -61,7 +61,7 @@ const Hero = () => {
             lg:w-[46rem] lg:h-[46rem] 
             xl:w-[55rem] xl:h-[55rem] 
             object-contain z-0"
-        />
+        /> */}
 
         {/* Avatar on top */}
         <img
