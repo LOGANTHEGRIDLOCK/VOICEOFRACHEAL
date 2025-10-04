@@ -1,15 +1,30 @@
 import React, { useState } from 'react';
-import { navLinks } from '../constants'; // adjust path if needed
-import { motion, AnimatePresence } from 'framer-motion';
+import { navLinks } from '../constants';
+import { AnimatePresence, motion } from 'framer-motion';
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
 
-  // Motion variants for mobile menu
+  // Motion variants for mobile dropdown
   const menuVariants = {
     hidden: { opacity: 0, y: -20 },
     visible: { opacity: 1, y: 0, transition: { duration: 0.3 } },
     exit: { opacity: 0, y: -20, transition: { duration: 0.2 } },
+  };
+
+  // Desktop animation variants
+  const desktopLogoVariant = {
+    hidden: { opacity: 0, x: -30 },
+    visible: { opacity: 1, x: 0, transition: { duration: 0.5 } },
+  };
+
+  const desktopLinkVariant = {
+    hidden: { opacity: 0, y: -15 },
+    visible: (i) => ({
+      opacity: 1,
+      y: 0,
+      transition: { duration: 0.4, delay: i * 0.1 }, // stagger effect
+    }),
   };
 
   return (
@@ -57,21 +72,36 @@ const Navbar = () => {
           </button>
         </div>
 
-        {/* Desktop: logo + links */}
+        {/* Desktop: logo + links with motion */}
         <div className="hidden md:flex md:items-center md:justify-between">
-          <a href="/" className="text-2xl font-bold text-brown-900">
+          {/* Animated logo */}
+          <motion.a
+            href="/"
+            className="text-2xl font-bold text-brown-900"
+            variants={desktopLogoVariant}
+            initial="hidden"
+            animate="visible"
+          >
             VoiceofRacheal
-          </a>
+          </motion.a>
+
+          {/* Animated links */}
           <ul className="flex flex-row gap-12 font-medium justify-center md:items-center md:justify-center">
-            {navLinks.map((link) => (
-              <li key={link.id}>
+            {navLinks.map((link, i) => (
+              <motion.li
+                key={link.id}
+                variants={desktopLinkVariant}
+                initial="hidden"
+                animate="visible"
+                custom={i} // pass index for stagger delay
+              >
                 <a
                   href={link.href}
                   className="text-brown-800 hover:text-brown-600 transition"
                 >
                   {link.name}
                 </a>
-              </li>
+              </motion.li>
             ))}
           </ul>
         </div>
@@ -86,7 +116,6 @@ const Navbar = () => {
               exit="exit"
               variants={menuVariants}
             >
-              {/* Logo centered above links */}
               <motion.a
                 href="/"
                 className="text-2xl font-bold text-brown-900"

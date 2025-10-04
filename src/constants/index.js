@@ -21,7 +21,7 @@ export const navLinks = [
   },
 ];
 
-export const About = [
+export const about = [
   {
     id: 1,
     title: 'VoiceOver Artist',
@@ -34,4 +34,4 @@ export const About = [
     icon: 'instagram.png',
     description: 'I also specialize in crafting engaging social media content and managing platforms to boost brand visibility and drive audience engagement',
   }
-]
+];
