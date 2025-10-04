@@ -4,7 +4,7 @@ export default {
   theme: {
     extend: {
       fontFamily: {
-        generalsans: ["Roboto", "sans-serif"],
+        generalsans: ["Oswald", "sans-serif"],
       },
       colors: {
         brown: {

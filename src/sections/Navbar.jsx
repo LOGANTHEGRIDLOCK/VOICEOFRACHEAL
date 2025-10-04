@@ -1,22 +1,31 @@
 import React, { useState } from 'react';
 import { navLinks } from '../constants'; // adjust path if needed
+import { motion, AnimatePresence } from 'framer-motion';
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
 
+  // Motion variants for mobile menu
+  const menuVariants = {
+    hidden: { opacity: 0, y: -20 },
+    visible: { opacity: 1, y: 0, transition: { duration: 0.3 } },
+    exit: { opacity: 0, y: -20, transition: { duration: 0.2 } },
+  };
+
   return (
-    <nav className="text-brown-900  top-0 z-50 ">
+    <nav className="text-brown-900 top-0 z-50">
       <div className="max-w-screen-xl mx-auto p-4">
         {/* Mobile: logo + hamburger */}
         <div className="flex items-center justify-between md:hidden">
-          <a
+          <motion.a
             href="/"
-            className={`text-2xl font-bold text-brown-900 transition ${
-              isOpen ? 'hidden' : 'block'
-            }`}
+            className="text-2xl font-bold text-brown-900"
+            initial={{ opacity: 0, x: -20 }}
+            animate={{ opacity: isOpen ? 0 : 1, x: 0 }}
+            transition={{ duration: 0.3 }}
           >
             VoiceofRacheal
-          </a>
+          </motion.a>
 
           <button
             onClick={() => setIsOpen(!isOpen)}
@@ -67,28 +76,47 @@ const Navbar = () => {
           </ul>
         </div>
 
-        {/* Mobile menu links */}
-        {isOpen && (
-          <div className="md:hidden mt-4 flex flex-col items-center gap-4">
-            {/* Logo centered above links */}
-            <a href="/" className="text-2xl font-bold text-brown-900">
-              VoiceofRacheal
-            </a>
+        {/* Mobile menu links with motion */}
+        <AnimatePresence>
+          {isOpen && (
+            <motion.div
+              className="md:hidden mt-4 flex flex-col items-center gap-4"
+              initial="hidden"
+              animate="visible"
+              exit="exit"
+              variants={menuVariants}
+            >
+              {/* Logo centered above links */}
+              <motion.a
+                href="/"
+                className="text-2xl font-bold text-brown-900"
+                initial={{ opacity: 0, y: -10 }}
+                animate={{ opacity: 1, y: 0, transition: { duration: 0.3 } }}
+                exit={{ opacity: 0, y: -10, transition: { duration: 0.2 } }}
+              >
+                VoiceofRacheal
+              </motion.a>
 
-            <ul className="flex flex-col items-center gap-4 font-medium">
-              {navLinks.map((link) => (
-                <li key={link.id}>
-                  <a
-                    href={link.href}
-                    className="text-brown-800 hover:text-brown-600 transition"
+              <ul className="flex flex-col items-center gap-4 font-medium">
+                {navLinks.map((link) => (
+                  <motion.li
+                    key={link.id}
+                    initial={{ opacity: 0, x: -20 }}
+                    animate={{ opacity: 1, x: 0, transition: { delay: 0.1 } }}
+                    exit={{ opacity: 0, x: -20 }}
                   >
-                    {link.name}
-                  </a>
-                </li>
-              ))}
-            </ul>
-          </div>
-        )}
+                    <a
+                      href={link.href}
+                      className="text-brown-800 hover:text-brown-600 transition"
+                    >
+                      {link.name}
+                    </a>
+                  </motion.li>
+                ))}
+              </ul>
+            </motion.div>
+          )}
+        </AnimatePresence>
       </div>
     </nav>
   );

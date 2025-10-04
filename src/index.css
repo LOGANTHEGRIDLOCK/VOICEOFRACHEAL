@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100..900;1,100..900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Oswald:wght@200..700&display=swap');
 
 @tailwind base;
 @tailwind components;
@@ -10,16 +10,13 @@
 
 body {
   background: #FAEBEB;
-  font-family: "Roboto", sans-serif;
-  font-optical-sizing: auto;
-  font-weight: <weight>;
-  font-style: normal;
-  font-variation-settings:
+  font-family: "Oswald", sans-serif;
+ 
 }
 
 @layer utilities {
   .c-space {
-    @apply sm:px-10 px-5;
+    @apply sm:px-10 px-10;
   }
    .head-text {
     @apply sm:text-4xl text-3xl font-semibold;
@@ -27,4 +24,9 @@ body {
    .hero_tag {
     @apply text-center xl:text-6xl md:text-5xl sm:text-4xl text-3xl font-generalsans font-black !leading-normal;
   }
+  .thumbs-up {
+  display: inline-block;
+  animation: raise-animation 1.5s infinite;
 }
+}
+
