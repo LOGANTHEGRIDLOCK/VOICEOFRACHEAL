@@ -30,8 +30,23 @@ export const about = [
   },
    {
     id: 2,
-    title: 'VoiceOver Artist',
+    title: 'SocialMedia Manager',
     icon: 'instagram.png',
     description: 'I also specialize in crafting engaging social media content and managing platforms to boost brand visibility and drive audience engagement',
   }
 ];
+
+export const videos = [
+  {
+    id: 1,
+    reel: 'video1.mp4',
+  },
+   {
+    id: 2,
+    reel: 'video2.mp4',
+  },
+  {
+    id: 3,
+    reel: 'video3.mp4',
+  }
+]

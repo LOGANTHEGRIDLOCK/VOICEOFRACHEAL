@@ -9,7 +9,7 @@
 }
 
 body {
-  background: #FAEBEB;
+  background: #032628;
   font-family: "Oswald", sans-serif;
  
 }
@@ -22,7 +22,7 @@ body {
     @apply sm:text-4xl text-3xl font-semibold;
   }
    .hero_tag {
-    @apply text-center xl:text-6xl md:text-5xl sm:text-4xl text-3xl font-generalsans font-black !leading-normal;
+    @apply text-center xl:text-6xl md:text-8xl sm:text-7xl text-3xl font-generalsans font-black !leading-normal;
   }
   .thumbs-up {
   display: inline-block;

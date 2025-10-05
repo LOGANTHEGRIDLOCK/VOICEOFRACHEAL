@@ -28,13 +28,13 @@ const Navbar = () => {
   };
 
   return (
-    <nav className="text-brown-900 top-0 z-50">
+    <nav className="text-amber-400 top-0 z-50">
       <div className="max-w-screen-xl mx-auto p-4">
         {/* Mobile: logo + hamburger */}
         <div className="flex items-center justify-between md:hidden">
           <motion.a
             href="/"
-            className="text-2xl font-bold text-brown-900"
+            className="text-2xl font-bold text-white"
             initial={{ opacity: 0, x: -20 }}
             animate={{ opacity: isOpen ? 0 : 1, x: 0 }}
             transition={{ duration: 0.3 }}
@@ -44,7 +44,7 @@ const Navbar = () => {
 
           <button
             onClick={() => setIsOpen(!isOpen)}
-            className="p-2 rounded-lg text-brown-800 hover:bg-brown-300 focus:outline-none"
+            className="p-2 rounded-lg  focus:outline-none"
           >
             <svg
               className="w-6 h-6"
@@ -77,7 +77,7 @@ const Navbar = () => {
           {/* Animated logo */}
           <motion.a
             href="/"
-            className="text-2xl font-bold text-brown-900"
+            className="text-2xl font-bold text-white"
             variants={desktopLogoVariant}
             initial="hidden"
             animate="visible"
@@ -87,23 +87,27 @@ const Navbar = () => {
 
           {/* Animated links */}
           <ul className="flex flex-row gap-12 font-medium justify-center md:items-center md:justify-center">
-            {navLinks.map((link, i) => (
-              <motion.li
-                key={link.id}
-                variants={desktopLinkVariant}
-                initial="hidden"
-                animate="visible"
-                custom={i} // pass index for stagger delay
-              >
-                <a
-                  href={link.href}
-                  className="text-brown-800 hover:text-brown-600 transition"
-                >
-                  {link.name}
-                </a>
-              </motion.li>
-            ))}
-          </ul>
+  {navLinks.map((link, i) => (
+    <motion.li
+      key={link.id}
+      variants={desktopLinkVariant}
+      initial="hidden"
+      animate="visible"
+      custom={i}
+      className="relative"
+    >
+      <a
+        href={link.href}
+        className="text-white transition-colors duration-300
+                   after:absolute after:left-0 after:-bottom-1 after:h-[2px] after:w-0
+                   after:bg-amber-400 after:transition-all after:duration-300
+                   hover:after:w-full"
+      >
+        {link.name}
+      </a>
+    </motion.li>
+  ))}
+</ul>
         </div>
 
         {/* Mobile menu links with motion */}
@@ -118,7 +122,7 @@ const Navbar = () => {
             >
               <motion.a
                 href="/"
-                className="text-2xl font-bold text-brown-900"
+                className="text-2xl font-bold text-white hover:text-amber-400"
                 initial={{ opacity: 0, y: -10 }}
                 animate={{ opacity: 1, y: 0, transition: { duration: 0.3 } }}
                 exit={{ opacity: 0, y: -10, transition: { duration: 0.2 } }}
@@ -136,7 +140,7 @@ const Navbar = () => {
                   >
                     <a
                       href={link.href}
-                      className="text-brown-800 hover:text-brown-600 transition"
+                      className="text-white hover:text-amber-400 transition"
                     >
                       {link.name}
                     </a>
