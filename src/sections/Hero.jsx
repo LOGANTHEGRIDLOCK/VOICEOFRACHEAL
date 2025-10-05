@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
+import Contact from './Contact';
 
 const Hero = () => {
   const titles = ['A VoiceOver Artist', 'Social Media Manager'];
@@ -85,9 +86,16 @@ const Hero = () => {
       <motion.button
         className="mt-16 px-8 py-4 border-2 border-amber-400 rounded-full text-[#032628] bg-amber-400 font-semibold text-lg sm:text-xl 
                    shadow-[2px_2px_0px_0px_#fff] font-handdrawn z-20"
-        whileHover={{ scale: 1.05, rotate: 1 }}
+        whileHover={{ scale: 1.05, rotate: 1 }} 
+        onClick={() => {
+    const contactSection = document.getElementById("contact");
+    if (contactSection) {
+      contactSection.scrollIntoView({ behavior: "smooth" });
+    }
+  }}
       >
-        Hire Me
+      <a href={"./Contact"}>  Hire Me </a>
+      
       </motion.button>
     </section>
   );

@@ -4,22 +4,22 @@ export const navLinks = [
   {
     id: 1,
     name: 'Home',
-    href: '/',
+    href: '#home',       // id="home" on your Hero section
   },
   {
     id: 2,
     name: 'About',
-    href: '/About',
+    href: '#about',      // id="about" on your About section
   },
   {
     id: 3,
     name: 'Work',
-    href: '/Work',
+    href: '#work',       // id="work" on your Work section
   },
   {
     id: 4,
     name: 'Contact',
-    href: '/Contact',
+    href: '#contact',    // id="contact" on your Contact section
   },
 ];
 
