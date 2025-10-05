@@ -1,3 +1,5 @@
+
+
 export const navLinks = [
   {
     id: 1,
@@ -48,5 +50,29 @@ export const videos = [
   {
     id: 3,
     reel: 'video3.mp4',
+  }
+]
+
+export const contact = [
+  {
+     id: 1,
+     title: 'Whatsapp',
+     icon: 'whatsapp.png',
+     info: " 07041692447",
+    description: "Feel free to message me anytime for inquiries or collaborations."
+  },
+  {
+     id: 2,
+     title: "gmail",
+     icon: "gmail.png",
+     info: "rachaeljesuloluwa@gmail.com",
+     description: "Send me an email for detailed project discussions or offers."
+  },
+  {
+    id:3,
+    title: "instagram",
+    icon: "instagram.png",
+    info: "@voiceofrachael",
+    description: "also send me a dm"
   }
 ]
